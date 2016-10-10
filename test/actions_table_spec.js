@@ -13,8 +13,12 @@ describe('actions table spec', function() {
     it('has 3 columns', function() {
       expect(tag.columns).to.have.lengthOf(3)
     })
+
+    it('has 3 column names', function() {
+      expect(tag.column_names).to.have.lengthOf(3)
+    })
     
-    it('add an action to specific cell', function() {
+    it('save actions to specific cell', function() {
       //column-row
       tag.cell_0_0.innerHTML = 'hello'
       tag.cell_1_0.innerHTML = 'bye'

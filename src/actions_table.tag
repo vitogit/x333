@@ -3,9 +3,9 @@
   <table class="table table-striped">
      <thead>
         <tr>
-           <th>Column1 </th>
-           <th>Column2 </th>
-           <th>Column3 </th>
+           <th>{column_names[0]}</th>
+           <th>{column_names[1]}</th>
+           <th>{column_names[2]}</th>
         </tr>
      </thead>
      <tbody>
@@ -21,6 +21,7 @@
   
   <script>
     this.columns = opts.columns || [[],[],[]]
+    this.column_names = opts.column_names || ['column1', 'column2', 'column3']
     
     save() {
       for (var col=0; col<3 ;col++) {
