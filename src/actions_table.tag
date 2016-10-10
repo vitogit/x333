@@ -1,11 +1,5 @@
 <actions_table>
-  <input name="input_text" type="text"/>
-  <select name="select_column">
-    <option value="0">Column1</option>
-    <option value="1">Column2</option>
-    <option value="2">Column3</option>
-  </select>
-  <button onclick={add_action}>Add action</button>
+  <button onclick={save}>save</button>
   <table class="table table-striped">
      <thead>
         <tr>
@@ -17,7 +11,7 @@
      <tbody>
         <tr each={row_number in [0,1,2]}>
           <td each={column, column_number in columns} > 
-            <span contenteditable="true" class="table_cell" id="cell_{row_number}_{column_number}">
+            <span contenteditable="true" class="table_cell" id="cell_{column_number}_{row_number}">
               {column[row_number].name}
             </span>
           </td>
@@ -26,21 +20,23 @@
   </table>
   
   <script>
-    this.columns = [[],[],[]]
+    this.columns = opts.columns || [[],[],[]]
     
-    add_action() {
-      var action = new Action({name:this.input_text.value})
-      this.add_action_to_column(action, this.select_column.value)
+    save() {
+      for (var col=0; col<3 ;col++) {
+        for (var row=0; row<3 ;row++) {
+          var cell_value = this['cell_'+col+'_'+row].innerHTML
+          this.columns[col][row] = cell_value
+        }
+      }
     }
 
-    add_action_to_column(action, column_position) {
-      this.columns[column_position].push(action)
-    }
   </script>
   <style>
     .table_cell {
       width:100%;
       display:inline-block;
+      border-bottom: 1px solid;
     }
   </style>
 </actions_table>

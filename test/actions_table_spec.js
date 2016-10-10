@@ -14,10 +14,14 @@ describe('actions table spec', function() {
       expect(tag.columns).to.have.lengthOf(3)
     })
     
-    it('add an action to specific column', function() {
-      var action = new Action({text:'helo'})
-      tag.add_action_to_column(action,0)
-      expect(tag.columns[0]).to.have.lengthOf(1)
+    it('add an action to specific cell', function() {
+      //column-row
+      tag.cell_0_0.innerHTML = 'hello'
+      tag.cell_1_0.innerHTML = 'bye'
+      tag.save()
+      expect(tag.columns[0][0]).to.be.eq('hello')
+      expect(tag.columns[1][0]).to.be.eq('bye')
+      
     })
     
     // it('is disabled after save', function() {

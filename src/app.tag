@@ -4,8 +4,16 @@
   
   <div class="container theme-showcase" role="main">
       <div class="text-center" class="jumbotron">
+        <h3>Current Sprint</h3>
         <actions_table></actions_table>
       </div>
+      
+      <div class="text-center" class="new_sprint">
+        <h1>New Sprint</h1>
+        <actions_table></actions_table>
+        <button onclick="save_sprint">Save</button>
+      </div>
+      
       <div class="text-center" class="history">
         <h1>History</h1>
         <div class="row">
@@ -41,4 +49,12 @@
 
   </div>
   
+  <script>
+    this.sprints = []
+    this.current_sprint = {}
+    this.new_sprint = {}
+    save_sprint() {
+      
+    }
+  </script>
 </app>
