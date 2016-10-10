@@ -6,7 +6,7 @@
     <option value="2">Column3</option>
   </select>
   <button onclick={add_action}>Add action</button>
-  <table id="grid">
+  <table class="table table-striped">
      <thead>
         <tr>
            <th>Column1 </th>
@@ -16,7 +16,11 @@
      </thead>
      <tbody>
         <tr each={row_number in [0,1,2]}>
-          <td each={column in columns} >{column[row_number].name}</td>
+          <td each={column, column_number in columns} > 
+            <span contenteditable="true" class="table_cell" id="cell_{row_number}_{column_number}">
+              {column[row_number].name}
+            </span>
+          </td>
         </tr>
      </tbody>
   </table>
@@ -33,4 +37,10 @@
       this.columns[column_position].push(action)
     }
   </script>
+  <style>
+    .table_cell {
+      width:100%;
+      display:inline-block;
+    }
+  </style>
 </actions_table>
