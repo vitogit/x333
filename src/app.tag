@@ -26,9 +26,8 @@
     this.current_sprint = {}
 
     save(at) {
-      console.log('at column0____'+at.column_names[0])
       this.sprints.push(at)
-      //this.new_sprint = {columns:[[],[],[]], column_names:['1','2','3'], saved:false}
+      this.new_sprint = {columns:[[],[],[]], column_names:['1','2','3'], saved:false}
       this.update()
     }
     

@@ -25,24 +25,25 @@
     this.saved = opts.saved || false
     
     save() {
+      var new_column_names = []
+      var new_columns = [[],[],[]]
+      
       for (var col=0; col<3 ;col++) {
         var cell = this['column_'+col]
         var cell_value = cell.innerHTML
-        this.column_names[col] = cell_value
+        new_column_names[col] = cell_value
       }
 
       for (var col=0; col<3 ;col++) {
         for (var row=0; row<3 ;row++) {
           var cell = this['cell_'+col+'_'+row]
           var cell_value = cell.innerHTML
-          this.columns[col][row] = new Action({name:cell_value})
+          new_columns[col][row] = new Action({name:cell_value})
         }
       }
-      this.saved = true
-      var actionsTable = new ActionsTable({column_names: this.column_names})
-      console.log('actionTable child____'+actionsTable.column_names)
-      riot.globalStore.trigger('save_new_sprint',actionsTable)
-      //this.parent.save({column_names:this.column_names, columns:this.columns, saved:this.saved})
+      //this.saved = true
+
+      riot.globalStore.trigger('save_new_sprint',{column_names: new_column_names, columns: new_columns, saved: true})
     }
 
   </script>
