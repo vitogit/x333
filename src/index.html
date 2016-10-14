@@ -7,12 +7,15 @@
     <app></app>
 
     <script src="./Action.js"></script>
+    <script src="./GlobalStore.js"></script>
 
     <script type="riot/tag" src="./app.tag"></script>
     <script type="riot/tag" src="./actions_table.tag"></script>
+    <script type="riot/tag" src="./actions_table_view.tag"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.3/riot+compiler.min.js"></script>
     <script>
-      riot.mount('*')
+      riot.globalStore = new GlobalStore()
+      riot.mount('app')
     </script>
   </body>
 </html>
